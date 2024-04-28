@@ -1,3 +1,4 @@
+#+SETUPFILE: ./../../retro_dark.theme
 #+title: Elisp notes
 
 * Functions
@@ -12,14 +13,14 @@
 : 3
 
 * Types
-- numbers :: 1
-- strings :: "Hi"
-- symbols :: 'hello
-- chars :: ?h
-- true :: t
-- false :: nil
-- pairs :: (cons 1 2)
-- lists :: (list 1 2 3)
+- numbers  1
+- strings  "Hi"
+- symbols  'hello
+- chars ?h
+- true t
+- false nil
+- pairs (cons 1 2)
+- lists (list 1 2 3)
 
 Can be evaluated with C-x C-e
 
@@ -44,7 +45,7 @@ Tells not to evaluate the expression.
 Allows to unquote and expression.
 Comma means "to unquote".
 
-#+begin_src emacs-lisp
+#+begin_src emacs-lisp :exports both
 `(1 2 ,(+ 1 2))
 #+end_src
 
@@ -166,7 +167,7 @@ Solved with ~progn~
 
 * Lists
 The list is a chain of cons cell types (pairs).
-#+begin_src emacs-lisp
+#+begin_src emacs-lisp :exports both
 (cons 1 (cons 2 nil))
 #+end_src
 
@@ -175,7 +176,7 @@ The list is a chain of cons cell types (pairs).
 
 * Iterations
 ** cl-loop
-#+begin_src emacs-lisp
+#+begin_src emacs-lisp :exports both
 (cl-loop for i from 0 to 10
          collect (* i i))
 #+end_src
@@ -184,7 +185,7 @@ The list is a chain of cons cell types (pairs).
 | 0 | 1 | 4 | 9 | 16 | 25 | 36 | 49 | 64 | 81 | 100 |
 
 ** while
-#+begin_src emacs-lisp
+#+begin_src emacs-lisp :exports both
 (setq my/val 0)
 (setq my/truth t)
 (while my/truth
@@ -196,7 +197,7 @@ The list is a chain of cons cell types (pairs).
 #+RESULTS:
 
 ** dolist
-#+begin_src emacs-lisp
+#+begin_src emacs-lisp :exports both
 (setq total 0)
 (dolist (i '(1 2 3)) ;; for i in '(1 2 3)
   (setq total (+ total i)))
@@ -219,7 +220,7 @@ total
 
 * Temp vars
 Use ~let~ if you want to have function local vars.
-#+begin_src emacs-lisp
+#+begin_src emacs-lisp :exports both
 (defun my-func ()
   (let (
         (four (+ 2 2))

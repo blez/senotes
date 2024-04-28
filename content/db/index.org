@@ -1,3 +1,4 @@
+#+SETUPFILE: ./../../retro_dark.theme
 #+title: Databases
 
 * ACID

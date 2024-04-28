@@ -1,3 +1,4 @@
+#+SETUPFILE: ./../retro_dark.theme
 #+title: Software Engineer Notes
 
  - [[file:db/index.org][Databases]]
