@@ -7,7 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Elisp notes</title>
 <meta name="generator" content="Org Mode" />
-<link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css" />
+<style type="text/css">
+/* Base */html,body {    background-color: #222;    min-height: 100%;    line-height: 1.5;}body {    color: #fafafa;    font-family: "Courier New";}::selection {    background-color:  #2ecc40;    color: white;}/* Responsive content positioning */@media only screen and (min-width: 1020px) /* Large screens */{    body{        padding: 10vh 25vw;    }}@media only screen and (max-width: 1020px) and (min-width: 750px) /* Small screens */{    body{        padding: 5vh 10vw;    }}@media only screen and (max-width: 750px) /* Small screens */{    body{        padding: 2vh 5vw;    }}/* Headers */h1{font-size: 2.5rem;}h2{font-size: 1.7rem;}h1 > .subtitle, h3, h4, h5, h6{font-size: 1.3rem;}.title{    margin-bottom: 2.5rem;}/* Padding & Margin */* {margin: 0; padding: 0;}pre, blockquote, ul, ol, p, table{    margin: 1rem 0;}h1, h2{margin-top: 2rem; line-height: 2rem;}h3, h4, h5, h6{margin-top: 1rem;}/* Links  */a, a:visited {    color: #01ff70;    text-decoration: underline;}a:hover, a:focus, a:active {    color: #2ecc40;}/* Code */pre {    font-family: "Courier New";    padding: .5rem;    background-color: #333;    padding: 0.5rem;    border-radius: 0.2rem;    font-size: 0.9rem;    color: #EEE;    overflow-x: auto;}.org-keyword{    color: #01ff70;}.org-rainbow-delimiters-depth-1{    color: #2ecc40;}.org-rainbow-delimiters-depth-2{    color: #01ff70;}/* Blockquotes */blockquote {    border-left: 3px solid #01ff70;    padding-left: 1rem;}li{    list-style-position: inside;}/* Tags */.tag{    margin-top: 0.5rem;    display: block;    color: white;    font-size: var(--font-size-xsmall);}.tag > span{		font-weight: 400;    font-size: 0.8rem;    background-color: #444;    text-transform: uppercase;    border-radius: 2px;    width: fit-content;    height: auto;    padding: 1px 5px;}/* Keywords */.todo{    color: #2ecc40;}.done{    color: #444;}/* Overflows */.outline-text-2, .outline-text-3, .outline-text-4{	  max-width: 100%;	  overflow-x: auto;}/* Table */tr:nth-child(even) {    background-color: #333;}th, td{    padding: 0.5rem;    text-align: center;}.underline{    text-decoration: underline;}img{    max-width: 100%;    height: auto;}
+</style>
 </head>
 <body>
 <div id="content" class="content">
@@ -16,39 +18,39 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org22b1eeb">Functions</a></li>
-<li><a href="#org3143b81">Types</a></li>
-<li><a href="#orgdf0f395">Quote</a></li>
-<li><a href="#orgfcd24a0">Quasiquote</a></li>
-<li><a href="#orgdb9a709">Interactive functions</a></li>
-<li><a href="#org539d6ab">Key bindings</a></li>
-<li><a href="#org60a5924">Conditions statements</a>
+<li><a href="#orgacf6cb4">Functions</a></li>
+<li><a href="#org921d7bf">Types</a></li>
+<li><a href="#orgd99085e">Quote</a></li>
+<li><a href="#org67c3308">Quasiquote</a></li>
+<li><a href="#orgc802cd5">Interactive functions</a></li>
+<li><a href="#orgdd56f20">Key bindings</a></li>
+<li><a href="#orgc8c52c6">Conditions statements</a>
 <ul>
-<li><a href="#orge82e056">if</a></li>
-<li><a href="#org5e362e9">when, unless</a></li>
-<li><a href="#org7c11e8a">and, or, not</a></li>
-<li><a href="#org5fd37d7">progn</a></li>
+<li><a href="#org5d8e0f2">if</a></li>
+<li><a href="#org5a7d6b0">when, unless</a></li>
+<li><a href="#org6426389">and, or, not</a></li>
+<li><a href="#org0fcb36e">progn</a></li>
 </ul>
 </li>
-<li><a href="#orgd5f96c0">Vars</a></li>
-<li><a href="#org7074787">Lists</a></li>
-<li><a href="#org29ee5ce">Iterations</a>
+<li><a href="#orgdda5dda">Vars</a></li>
+<li><a href="#orgf7ba143">Lists</a></li>
+<li><a href="#org9686e39">Iterations</a>
 <ul>
-<li><a href="#org0fac15a">cl-loop</a></li>
-<li><a href="#org075d053">while</a></li>
-<li><a href="#org3b9a979">dolist</a></li>
+<li><a href="#org3a26f5a">cl-loop</a></li>
+<li><a href="#org682a71c">while</a></li>
+<li><a href="#orge9307fd">dolist</a></li>
 </ul>
 </li>
-<li><a href="#orgace52b1">Hooks</a></li>
-<li><a href="#orgaa50287">Temp vars</a></li>
-<li><a href="#org4775a84">Links</a></li>
+<li><a href="#org0d30a40">Hooks</a></li>
+<li><a href="#orged0766c">Temp vars</a></li>
+<li><a href="#orgf827a67">Links</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org22b1eeb" class="outline-2">
-<h2 id="org22b1eeb">Functions</h2>
-<div class="outline-text-2" id="text-org22b1eeb">
+<div id="outline-container-orgacf6cb4" class="outline-2">
+<h2 id="orgacf6cb4">Functions</h2>
+<div class="outline-text-2" id="text-orgacf6cb4">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(<span style="font-weight: bold;">defun</span> <span style="font-weight: bold;">bz/add</span> (num)
   (+ num 1))
@@ -59,9 +61,9 @@
 </div>
 </div>
 
-<div id="outline-container-org3143b81" class="outline-2">
-<h2 id="org3143b81">Types</h2>
-<div class="outline-text-2" id="text-org3143b81">
+<div id="outline-container-org921d7bf" class="outline-2">
+<h2 id="org921d7bf">Types</h2>
+<div class="outline-text-2" id="text-org921d7bf">
 <ul class="org-ul">
 <li>numbers  1</li>
 <li>strings  "Hi"</li>
@@ -79,9 +81,9 @@ Can be evaluated with C-x C-e
 </div>
 </div>
 
-<div id="outline-container-orgdf0f395" class="outline-2">
-<h2 id="orgdf0f395">Quote</h2>
-<div class="outline-text-2" id="text-orgdf0f395">
+<div id="outline-container-orgd99085e" class="outline-2">
+<h2 id="orgd99085e">Quote</h2>
+<div class="outline-text-2" id="text-orgd99085e">
 <p>
 Tells not to evaluate the expression.
 </p>
@@ -98,9 +100,9 @@ Tells not to evaluate the expression.
 </div>
 </div>
 
-<div id="outline-container-orgfcd24a0" class="outline-2">
-<h2 id="orgfcd24a0">Quasiquote</h2>
-<div class="outline-text-2" id="text-orgfcd24a0">
+<div id="outline-container-org67c3308" class="outline-2">
+<h2 id="org67c3308">Quasiquote</h2>
+<div class="outline-text-2" id="text-org67c3308">
 <p>
 Allows to unquote and expression.
 Comma means "to unquote".
@@ -132,9 +134,9 @@ Comma means "to unquote".
 </div>
 </div>
 
-<div id="outline-container-orgdb9a709" class="outline-2">
-<h2 id="orgdb9a709">Interactive functions</h2>
-<div class="outline-text-2" id="text-orgdb9a709">
+<div id="outline-container-orgc802cd5" class="outline-2">
+<h2 id="orgc802cd5">Interactive functions</h2>
+<div class="outline-text-2" id="text-orgc802cd5">
 <p>
 Can be used as a command in emacs through M-x.
 <code>(interactive)</code> should be used inside a function.
@@ -151,9 +153,9 @@ Can be used as a command in emacs through M-x.
 </div>
 </div>
 
-<div id="outline-container-org539d6ab" class="outline-2">
-<h2 id="org539d6ab">Key bindings</h2>
-<div class="outline-text-2" id="text-org539d6ab">
+<div id="outline-container-orgdd56f20" class="outline-2">
+<h2 id="orgdd56f20">Key bindings</h2>
+<div class="outline-text-2" id="text-orgdd56f20">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(global-set-key (kbd <span style="font-style: italic;">"C-S-s"</span>) 'insert-numbers
 </pre>
@@ -177,13 +179,13 @@ If there is no need to set it globally, it can be done for a specific mode using
 </div>
 </div>
 
-<div id="outline-container-org60a5924" class="outline-2">
-<h2 id="org60a5924">Conditions statements</h2>
-<div class="outline-text-2" id="text-org60a5924">
+<div id="outline-container-orgc8c52c6" class="outline-2">
+<h2 id="orgc8c52c6">Conditions statements</h2>
+<div class="outline-text-2" id="text-orgc8c52c6">
 </div>
-<div id="outline-container-orge82e056" class="outline-3">
-<h3 id="orge82e056">if</h3>
-<div class="outline-text-3" id="text-orge82e056">
+<div id="outline-container-org5d8e0f2" class="outline-3">
+<h3 id="org5d8e0f2">if</h3>
+<div class="outline-text-3" id="text-org5d8e0f2">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(<span style="font-weight: bold;">if</span> t
     'it-was-true 'it-was-false)
@@ -207,9 +209,9 @@ Anything but <code>nil</code> is true
 </div>
 </div>
 
-<div id="outline-container-org5e362e9" class="outline-3">
-<h3 id="org5e362e9">when, unless</h3>
-<div class="outline-text-3" id="text-org5e362e9">
+<div id="outline-container-org5a7d6b0" class="outline-3">
+<h3 id="org5a7d6b0">when, unless</h3>
+<div class="outline-text-3" id="text-org5a7d6b0">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(<span style="font-weight: bold;">when</span> t 'this-is-true)
 </pre>
@@ -222,9 +224,9 @@ Anything but <code>nil</code> is true
 </div>
 </div>
 
-<div id="outline-container-org7c11e8a" class="outline-3">
-<h3 id="org7c11e8a">and, or, not</h3>
-<div class="outline-text-3" id="text-org7c11e8a">
+<div id="outline-container-org6426389" class="outline-3">
+<h3 id="org6426389">and, or, not</h3>
+<div class="outline-text-3" id="text-org6426389">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(<span style="font-weight: bold;">and</span> t nil)
 (<span style="font-weight: bold;">or</span> t nil)
@@ -234,9 +236,9 @@ Anything but <code>nil</code> is true
 </div>
 </div>
 
-<div id="outline-container-org5fd37d7" class="outline-3">
-<h3 id="org5fd37d7">progn</h3>
-<div class="outline-text-3" id="text-org5fd37d7">
+<div id="outline-container-org0fcb36e" class="outline-3">
+<h3 id="org0fcb36e">progn</h3>
+<div class="outline-text-3" id="text-org0fcb36e">
 <p>
 In Elisp the last expression to be evaluated is returned.
 This can be a problem if we need to perform a bunch of operations in an if statement.
@@ -262,9 +264,9 @@ Solved with <code>progn</code>
 </div>
 </div>
 
-<div id="outline-container-orgd5f96c0" class="outline-2">
-<h2 id="orgd5f96c0">Vars</h2>
-<div class="outline-text-2" id="text-orgd5f96c0">
+<div id="outline-container-orgdda5dda" class="outline-2">
+<h2 id="orgdda5dda">Vars</h2>
+<div class="outline-text-2" id="text-orgdda5dda">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(<span style="font-weight: bold;">setq</span> some-existing-var t)
 (<span style="font-weight: bold;">defvar</span> <span style="font-weight: bold; font-style: italic;">new-var</span> <span style="font-style: italic;">"something"</span>)
@@ -273,9 +275,9 @@ Solved with <code>progn</code>
 </div>
 </div>
 
-<div id="outline-container-org7074787" class="outline-2">
-<h2 id="org7074787">Lists</h2>
-<div class="outline-text-2" id="text-org7074787">
+<div id="outline-container-orgf7ba143" class="outline-2">
+<h2 id="orgf7ba143">Lists</h2>
+<div class="outline-text-2" id="text-orgf7ba143">
 <p>
 The list is a chain of cons cell types (pairs).
 </p>
@@ -302,13 +304,13 @@ The list is a chain of cons cell types (pairs).
 </div>
 </div>
 
-<div id="outline-container-org29ee5ce" class="outline-2">
-<h2 id="org29ee5ce">Iterations</h2>
-<div class="outline-text-2" id="text-org29ee5ce">
+<div id="outline-container-org9686e39" class="outline-2">
+<h2 id="org9686e39">Iterations</h2>
+<div class="outline-text-2" id="text-org9686e39">
 </div>
-<div id="outline-container-org0fac15a" class="outline-3">
-<h3 id="org0fac15a">cl-loop</h3>
-<div class="outline-text-3" id="text-org0fac15a">
+<div id="outline-container-org3a26f5a" class="outline-3">
+<h3 id="org3a26f5a">cl-loop</h3>
+<div class="outline-text-3" id="text-org3a26f5a">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(<span style="font-weight: bold;">cl-loop</span> for i from 0 to 10
          collect (* i i))
@@ -360,9 +362,9 @@ The list is a chain of cons cell types (pairs).
 </div>
 </div>
 
-<div id="outline-container-org075d053" class="outline-3">
-<h3 id="org075d053">while</h3>
-<div class="outline-text-3" id="text-org075d053">
+<div id="outline-container-org682a71c" class="outline-3">
+<h3 id="org682a71c">while</h3>
+<div class="outline-text-3" id="text-org682a71c">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(<span style="font-weight: bold;">setq</span> my/val 0)
 (<span style="font-weight: bold;">setq</span> my/truth t)
@@ -375,9 +377,9 @@ The list is a chain of cons cell types (pairs).
 </div>
 </div>
 
-<div id="outline-container-org3b9a979" class="outline-3">
-<h3 id="org3b9a979">dolist</h3>
-<div class="outline-text-3" id="text-org3b9a979">
+<div id="outline-container-orge9307fd" class="outline-3">
+<h3 id="orge9307fd">dolist</h3>
+<div class="outline-text-3" id="text-orge9307fd">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(<span style="font-weight: bold;">setq</span> total 0)
 (<span style="font-weight: bold;">dolist</span> (i '(1 2 3)) <span style="font-weight: bold; font-style: italic;">;; </span><span style="font-weight: bold; font-style: italic;">for i in '(1 2 3)</span>
@@ -393,9 +395,9 @@ total
 </div>
 </div>
 
-<div id="outline-container-orgace52b1" class="outline-2">
-<h2 id="orgace52b1">Hooks</h2>
-<div class="outline-text-2" id="text-orgace52b1">
+<div id="outline-container-org0d30a40" class="outline-2">
+<h2 id="org0d30a40">Hooks</h2>
+<div class="outline-text-2" id="text-org0d30a40">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(<span style="font-weight: bold;">defun</span> <span style="font-weight: bold;">my-func</span>()
   (<span style="font-weight: bold;">interactive</span>)
@@ -409,9 +411,9 @@ total
 </div>
 </div>
 
-<div id="outline-container-orgaa50287" class="outline-2">
-<h2 id="orgaa50287">Temp vars</h2>
-<div class="outline-text-2" id="text-orgaa50287">
+<div id="outline-container-orged0766c" class="outline-2">
+<h2 id="orged0766c">Temp vars</h2>
+<div class="outline-text-2" id="text-orged0766c">
 <p>
 Use <code>let</code> if you want to have function local vars.
 </p>
@@ -432,9 +434,9 @@ Use <code>let</code> if you want to have function local vars.
 </div>
 </div>
 
-<div id="outline-container-org4775a84" class="outline-2">
-<h2 id="org4775a84">Links</h2>
-<div class="outline-text-2" id="text-org4775a84">
+<div id="outline-container-orgf827a67" class="outline-2">
+<h2 id="orgf827a67">Links</h2>
+<div class="outline-text-2" id="text-orgf827a67">
 <ul class="org-ul">
 <li><a href="https://www.youtube.com/watch?v=1y__2IK-aLM">https://www.youtube.com/watch?v=1y__2IK-aLM</a></li>
 </ul>
