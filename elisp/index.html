@@ -16,39 +16,39 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orgf10b442">Functions</a></li>
-<li><a href="#org53bfb94">Types</a></li>
-<li><a href="#org437eae8">Quote</a></li>
-<li><a href="#org46a3a33">Quasiquote</a></li>
-<li><a href="#orgd30244c">Interactive functions</a></li>
-<li><a href="#orgd1754eb">Key bindings</a></li>
-<li><a href="#org8dadbce">Conditions statements</a>
+<li><a href="#org3db99c7">Functions</a></li>
+<li><a href="#orgca08786">Types</a></li>
+<li><a href="#org8d4bb0d">Quote</a></li>
+<li><a href="#org8496be6">Quasiquote</a></li>
+<li><a href="#org51598d2">Interactive functions</a></li>
+<li><a href="#org79447e4">Key bindings</a></li>
+<li><a href="#org70c97ba">Conditions statements</a>
 <ul>
-<li><a href="#orga4081b8">if</a></li>
-<li><a href="#orgbd78ef1">when, unless</a></li>
-<li><a href="#orgd7b4e08">and, or, not</a></li>
-<li><a href="#org6921d5a">progn</a></li>
+<li><a href="#orgc39da42">if</a></li>
+<li><a href="#orgc9a72fa">when, unless</a></li>
+<li><a href="#org51e1bb2">and, or, not</a></li>
+<li><a href="#orgcce2e07">progn</a></li>
 </ul>
 </li>
-<li><a href="#org5c8ea6b">Vars</a></li>
-<li><a href="#orge7aa3af">Lists</a></li>
-<li><a href="#org784d429">Iterations</a>
+<li><a href="#org6fc25a6">Vars</a></li>
+<li><a href="#org8d35946">Lists</a></li>
+<li><a href="#orgef8dd25">Iterations</a>
 <ul>
-<li><a href="#orgd65494d">cl-loop</a></li>
-<li><a href="#orgd506c88">while</a></li>
-<li><a href="#org895baa7">dolist</a></li>
+<li><a href="#orgf1e6540">cl-loop</a></li>
+<li><a href="#orge6141e3">while</a></li>
+<li><a href="#orgab1b345">dolist</a></li>
 </ul>
 </li>
-<li><a href="#org8923fa0">Hooks</a></li>
-<li><a href="#org52656c9">Temp vars</a></li>
-<li><a href="#org3ccb5d7">Links</a></li>
+<li><a href="#org0a46adc">Hooks</a></li>
+<li><a href="#org6ff5e27">Temp vars</a></li>
+<li><a href="#org36e7f2d">Links</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orgf10b442" class="outline-2">
-<h2 id="orgf10b442">Functions</h2>
-<div class="outline-text-2" id="text-orgf10b442">
+<div id="outline-container-org3db99c7" class="outline-2">
+<h2 id="org3db99c7">Functions</h2>
+<div class="outline-text-2" id="text-org3db99c7">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(<span style="font-weight: bold;">defun</span> <span style="font-weight: bold;">bz/add</span> (num)
   (+ num 1))
@@ -59,9 +59,9 @@
 </div>
 </div>
 
-<div id="outline-container-org53bfb94" class="outline-2">
-<h2 id="org53bfb94">Types</h2>
-<div class="outline-text-2" id="text-org53bfb94">
+<div id="outline-container-orgca08786" class="outline-2">
+<h2 id="orgca08786">Types</h2>
+<div class="outline-text-2" id="text-orgca08786">
 <dl class="org-dl">
 <dt>numbers</dt><dd>1</dd>
 <dt>strings</dt><dd>"Hi"</dd>
@@ -79,9 +79,9 @@ Can be evaluated with C-x C-e
 </div>
 </div>
 
-<div id="outline-container-org437eae8" class="outline-2">
-<h2 id="org437eae8">Quote</h2>
-<div class="outline-text-2" id="text-org437eae8">
+<div id="outline-container-org8d4bb0d" class="outline-2">
+<h2 id="org8d4bb0d">Quote</h2>
+<div class="outline-text-2" id="text-org8d4bb0d">
 <p>
 Tells not to evaluate the expression.
 </p>
@@ -98,9 +98,9 @@ Tells not to evaluate the expression.
 </div>
 </div>
 
-<div id="outline-container-org46a3a33" class="outline-2">
-<h2 id="org46a3a33">Quasiquote</h2>
-<div class="outline-text-2" id="text-org46a3a33">
+<div id="outline-container-org8496be6" class="outline-2">
+<h2 id="org8496be6">Quasiquote</h2>
+<div class="outline-text-2" id="text-org8496be6">
 <p>
 Allows to unquote and expression.
 Comma means "to unquote".
@@ -113,9 +113,9 @@ Comma means "to unquote".
 </div>
 </div>
 
-<div id="outline-container-orgd30244c" class="outline-2">
-<h2 id="orgd30244c">Interactive functions</h2>
-<div class="outline-text-2" id="text-orgd30244c">
+<div id="outline-container-org51598d2" class="outline-2">
+<h2 id="org51598d2">Interactive functions</h2>
+<div class="outline-text-2" id="text-org51598d2">
 <p>
 Can be used as a command in emacs through M-x.
 <code>(interactive)</code> should be used inside a function.
@@ -132,9 +132,9 @@ Can be used as a command in emacs through M-x.
 </div>
 </div>
 
-<div id="outline-container-orgd1754eb" class="outline-2">
-<h2 id="orgd1754eb">Key bindings</h2>
-<div class="outline-text-2" id="text-orgd1754eb">
+<div id="outline-container-org79447e4" class="outline-2">
+<h2 id="org79447e4">Key bindings</h2>
+<div class="outline-text-2" id="text-org79447e4">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(global-set-key (kbd <span style="font-style: italic;">"C-S-s"</span>) 'insert-numbers
 </pre>
@@ -158,13 +158,13 @@ If there is no need to set it globally, it can be done for a specific mode using
 </div>
 </div>
 
-<div id="outline-container-org8dadbce" class="outline-2">
-<h2 id="org8dadbce">Conditions statements</h2>
-<div class="outline-text-2" id="text-org8dadbce">
+<div id="outline-container-org70c97ba" class="outline-2">
+<h2 id="org70c97ba">Conditions statements</h2>
+<div class="outline-text-2" id="text-org70c97ba">
 </div>
-<div id="outline-container-orga4081b8" class="outline-3">
-<h3 id="orga4081b8">if</h3>
-<div class="outline-text-3" id="text-orga4081b8">
+<div id="outline-container-orgc39da42" class="outline-3">
+<h3 id="orgc39da42">if</h3>
+<div class="outline-text-3" id="text-orgc39da42">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(<span style="font-weight: bold;">if</span> t
     'it-was-true 'it-was-false)
@@ -188,9 +188,9 @@ Anything but <code>nil</code> is true
 </div>
 </div>
 
-<div id="outline-container-orgbd78ef1" class="outline-3">
-<h3 id="orgbd78ef1">when, unless</h3>
-<div class="outline-text-3" id="text-orgbd78ef1">
+<div id="outline-container-orgc9a72fa" class="outline-3">
+<h3 id="orgc9a72fa">when, unless</h3>
+<div class="outline-text-3" id="text-orgc9a72fa">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(<span style="font-weight: bold;">when</span> t 'this-is-true)
 </pre>
@@ -203,9 +203,9 @@ Anything but <code>nil</code> is true
 </div>
 </div>
 
-<div id="outline-container-orgd7b4e08" class="outline-3">
-<h3 id="orgd7b4e08">and, or, not</h3>
-<div class="outline-text-3" id="text-orgd7b4e08">
+<div id="outline-container-org51e1bb2" class="outline-3">
+<h3 id="org51e1bb2">and, or, not</h3>
+<div class="outline-text-3" id="text-org51e1bb2">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(<span style="font-weight: bold;">and</span> t nil)
 (<span style="font-weight: bold;">or</span> t nil)
@@ -215,9 +215,9 @@ Anything but <code>nil</code> is true
 </div>
 </div>
 
-<div id="outline-container-org6921d5a" class="outline-3">
-<h3 id="org6921d5a">progn</h3>
-<div class="outline-text-3" id="text-org6921d5a">
+<div id="outline-container-orgcce2e07" class="outline-3">
+<h3 id="orgcce2e07">progn</h3>
+<div class="outline-text-3" id="text-orgcce2e07">
 <p>
 In Elisp the last expression to be evaluated is returned.
 This can be a problem if we need to perform a bunch of operations in an if statement.
@@ -243,9 +243,9 @@ Solved with <code>progn</code>
 </div>
 </div>
 
-<div id="outline-container-org5c8ea6b" class="outline-2">
-<h2 id="org5c8ea6b">Vars</h2>
-<div class="outline-text-2" id="text-org5c8ea6b">
+<div id="outline-container-org6fc25a6" class="outline-2">
+<h2 id="org6fc25a6">Vars</h2>
+<div class="outline-text-2" id="text-org6fc25a6">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(<span style="font-weight: bold;">setq</span> some-existing-var t)
 (<span style="font-weight: bold;">defvar</span> <span style="font-weight: bold; font-style: italic;">new-var</span> <span style="font-style: italic;">"something"</span>)
@@ -254,9 +254,9 @@ Solved with <code>progn</code>
 </div>
 </div>
 
-<div id="outline-container-orge7aa3af" class="outline-2">
-<h2 id="orge7aa3af">Lists</h2>
-<div class="outline-text-2" id="text-orge7aa3af">
+<div id="outline-container-org8d35946" class="outline-2">
+<h2 id="org8d35946">Lists</h2>
+<div class="outline-text-2" id="text-org8d35946">
 <p>
 The list is a chain of cons cell types (pairs).
 </p>
@@ -267,13 +267,13 @@ The list is a chain of cons cell types (pairs).
 </div>
 </div>
 
-<div id="outline-container-org784d429" class="outline-2">
-<h2 id="org784d429">Iterations</h2>
-<div class="outline-text-2" id="text-org784d429">
+<div id="outline-container-orgef8dd25" class="outline-2">
+<h2 id="orgef8dd25">Iterations</h2>
+<div class="outline-text-2" id="text-orgef8dd25">
 </div>
-<div id="outline-container-orgd65494d" class="outline-3">
-<h3 id="orgd65494d">cl-loop</h3>
-<div class="outline-text-3" id="text-orgd65494d">
+<div id="outline-container-orgf1e6540" class="outline-3">
+<h3 id="orgf1e6540">cl-loop</h3>
+<div class="outline-text-3" id="text-orgf1e6540">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(<span style="font-weight: bold;">cl-loop</span> for i from 0 to 10
          collect (* i i))
@@ -282,9 +282,9 @@ The list is a chain of cons cell types (pairs).
 </div>
 </div>
 
-<div id="outline-container-orgd506c88" class="outline-3">
-<h3 id="orgd506c88">while</h3>
-<div class="outline-text-3" id="text-orgd506c88">
+<div id="outline-container-orge6141e3" class="outline-3">
+<h3 id="orge6141e3">while</h3>
+<div class="outline-text-3" id="text-orge6141e3">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(<span style="font-weight: bold;">setq</span> my/val 0)
 (<span style="font-weight: bold;">setq</span> my/truth t)
@@ -297,9 +297,9 @@ The list is a chain of cons cell types (pairs).
 </div>
 </div>
 
-<div id="outline-container-org895baa7" class="outline-3">
-<h3 id="org895baa7">dolist</h3>
-<div class="outline-text-3" id="text-org895baa7">
+<div id="outline-container-orgab1b345" class="outline-3">
+<h3 id="orgab1b345">dolist</h3>
+<div class="outline-text-3" id="text-orgab1b345">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(<span style="font-weight: bold;">setq</span> total 0)
 (<span style="font-weight: bold;">dolist</span> (i '(1 2 3)) <span style="font-weight: bold; font-style: italic;">;; </span><span style="font-weight: bold; font-style: italic;">for i in '(1 2 3)</span>
@@ -311,9 +311,9 @@ total
 </div>
 </div>
 
-<div id="outline-container-org8923fa0" class="outline-2">
-<h2 id="org8923fa0">Hooks</h2>
-<div class="outline-text-2" id="text-org8923fa0">
+<div id="outline-container-org0a46adc" class="outline-2">
+<h2 id="org0a46adc">Hooks</h2>
+<div class="outline-text-2" id="text-org0a46adc">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(<span style="font-weight: bold;">defun</span> <span style="font-weight: bold;">my-func</span>()
   (<span style="font-weight: bold;">interactive</span>)
@@ -327,9 +327,9 @@ total
 </div>
 </div>
 
-<div id="outline-container-org52656c9" class="outline-2">
-<h2 id="org52656c9">Temp vars</h2>
-<div class="outline-text-2" id="text-org52656c9">
+<div id="outline-container-org6ff5e27" class="outline-2">
+<h2 id="org6ff5e27">Temp vars</h2>
+<div class="outline-text-2" id="text-org6ff5e27">
 <p>
 Use <code>let</code> if you want to have function local vars.
 </p>
@@ -346,9 +346,9 @@ Use <code>let</code> if you want to have function local vars.
 </div>
 </div>
 
-<div id="outline-container-org3ccb5d7" class="outline-2">
-<h2 id="org3ccb5d7">Links</h2>
-<div class="outline-text-2" id="text-org3ccb5d7">
+<div id="outline-container-org36e7f2d" class="outline-2">
+<h2 id="org36e7f2d">Links</h2>
+<div class="outline-text-2" id="text-org36e7f2d">
 <ul class="org-ul">
 <li><a href="https://www.youtube.com/watch?v=1y__2IK-aLM">https://www.youtube.com/watch?v=1y__2IK-aLM</a></li>
 </ul>
