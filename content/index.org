@@ -1,23 +1,4 @@
 #+title: Software Engineer Notes
 
-* Overview
-[[file:db/index.org][Databases]] specific topics
-
-* Example
-#+begin_src go
-import "fmt"
-
-func main() {
-	for i, v := range []int{1,2,3} {
-		fmt.Println(i,v)
-	}
-}
-#+end_src
-
-Here is a new change
-One more
-
-#+RESULTS:
-: 0 1
-: 1 2
-: 2 3
+ - [[file:db/index.org][Databases]]
+ - [[file:elisp/index.org][Elisp]]

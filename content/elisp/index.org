@@ -1,0 +1,236 @@
+#+title: Elisp notes
+
+* Functions
+#+begin_src emacs-lisp :tangle yes
+(defun bz/add (num)
+  (+ num 1))
+
+(bz/add 2)
+#+end_src
+
+#+RESULTS:
+: 3
+
+* Types
+- numbers :: 1
+- strings :: "Hi"
+- symbols :: 'hello
+- chars :: ?h
+- true :: t
+- false :: nil
+- pairs :: (cons 1 2)
+- lists :: (list 1 2 3)
+
+Can be evaluated with C-x C-e
+
+* Quote
+Tells not to evaluate the expression.
+
+#+begin_src emacs-lisp
+'(+ 1 2)
+#+end_src
+
+#+RESULTS:
+| + | 1 | 2 |
+
+#+begin_src emacs-lisp
+'i-am-not-a-expression-just-a-symbol
+#+end_src
+
+#+RESULTS:
+: i-am-not-a-expression-just-a-symbol
+
+* Quasiquote
+Allows to unquote and expression.
+Comma means "to unquote".
+
+#+begin_src emacs-lisp
+`(1 2 ,(+ 1 2))
+#+end_src
+
+#+RESULTS:
+| 1 | 2 | 3 |
+
+* Interactive functions
+Can be used as a command in emacs through M-x.
+~(interactive)~ should be used inside a function.
+
+#+begin_src emacs-lisp
+(defun insert-numbers ()
+  "insert a sequence of numbers" ;; docstring
+  (interactive)
+  ;; (insert "1 2 3"))
+  (message "1 2 3"))
+#+end_src
+
+#+RESULTS:
+: insert-numbers
+
+* Key bindings
+#+begin_src emacs-lisp
+(global-set-key (kbd "C-S-s") 'insert-numbers
+#+END_SRC
+
+#+begin_src emacs-lisp
+(keymap-global-set "C-S-s" 'insert-numbers) ;; for newer emacs versions
+#+end_src
+
+If there is no need to set it globally, it can be done for a specific mode using ~keymap-set~.
+#+begin_src emacs-lisp
+(defun c--insert-if ()
+  (interactive)
+  (insert "if () {\n}"))
+(keymap-set c-mode-map "C-S-s", 'c--insert-if)
+#+end_src
+
+* Conditions statements
+** if
+#+begin_src emacs-lisp
+(if t
+    'it-was-true 'it-was-false)
+#+end_src
+
+#+RESULTS:
+: it-was-true
+
+#+begin_src emacs-lisp
+(if nil
+    'it-was-true 'it-was-false)
+#+end_src
+
+#+RESULTS:
+: it-was-false
+
+Anything but ~nil~ is true
+#+begin_src emacs-lisp
+(if 'anything
+    'it-was-true 'it-was-false)
+#+end_src
+
+#+RESULTS:
+: it-was-true
+
+** when, unless
+#+begin_src emacs-lisp
+(when t 'this-is-true)
+#+end_src
+
+#+RESULTS:
+: this-is-true
+
+#+begin_src emacs-lisp
+(unless nil 'this-is-false)
+#+end_src
+
+#+RESULTS:
+: this-is-false
+
+** and, or, not
+#+begin_src emacs-lisp
+(and t nil)
+(or t nil)
+(not t)
+#+end_src
+
+** progn
+In Elisp the last expression to be evaluated is returned.
+This can be a problem if we need to perform a bunch of operations in an if statement.
+Solved with ~progn~
+#+begin_src emacs-lisp
+(if t
+    (progn
+      (message "print text and")
+      'do-something-else)
+  'this-is-false)
+#+end_src
+
+#+RESULTS:
+: do-something-else
+
+~progn~ evals everything and returns the last one.
+#+BEGIN_SRC emacs-lisp
+(progn 1 2 3)
+#+END_SRC
+
+#+RESULTS:
+: 3
+
+* Vars
+#+begin_src emacs-lisp
+(setq some-existing-var t)
+(defvar new-var "something")
+#+end_src
+
+#+RESULTS:
+: new-var
+
+* Lists
+The list is a chain of cons cell types (pairs).
+#+begin_src emacs-lisp
+(cons 1 (cons 2 nil))
+#+end_src
+
+#+RESULTS:
+| 1 | 2 |
+
+* Iterations
+** cl-loop
+#+begin_src emacs-lisp
+(cl-loop for i from 0 to 10
+         collect (* i i))
+#+end_src
+
+#+RESULTS:
+| 0 | 1 | 4 | 9 | 16 | 25 | 36 | 49 | 64 | 81 | 100 |
+
+** while
+#+begin_src emacs-lisp
+(setq my/val 0)
+(setq my/truth t)
+(while my/truth
+  (if (= my/val 10)
+      (setq my/truth nil))
+  (message "%s" (setq my/val (1+ my/val))))
+#+end_src
+
+#+RESULTS:
+
+** dolist
+#+begin_src emacs-lisp
+(setq total 0)
+(dolist (i '(1 2 3)) ;; for i in '(1 2 3)
+  (setq total (+ total i)))
+total
+#+end_src
+
+#+RESULTS:
+: 6
+
+* Hooks
+#+begin_src emacs-lisp
+(defun my-func()
+  (interactive)
+  ;; do something
+  (run-hook 'my-func-hook))
+
+(add-hook 'my-func-hook (lambda () (insert "1")))
+(add-hook 'my-func-hook (lambda () (insert "2")))
+#+end_src
+
+* Temp vars
+Use ~let~ if you want to have function local vars.
+#+begin_src emacs-lisp
+(defun my-func ()
+  (let (
+        (four (+ 2 2))
+        (five 5)
+        )
+    (- four five)))
+(my-func)
+#+end_src
+
+#+RESULTS:
+: -1
+
+* Links
+ - https://www.youtube.com/watch?v=1y__2IK-aLM
