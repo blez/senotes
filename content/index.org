@@ -1,6 +1,6 @@
 #+title: Software Engineer Notes
 
-* Overwiew
+* Overview
 [[file:db/index.org][Databases]] specific topics
 
 * Example
